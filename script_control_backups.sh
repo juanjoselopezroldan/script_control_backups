@@ -10,3 +10,5 @@ prueba3=$( echo $minnie | cut -d " " -f 6-11)
 
 donald=$( mariadb -u root -p'root' -e 'select Name, Level, JobStatus, RealEndTime, (JobBytes/1024)/1024 from bacula.Job where RealEndTime in (select max(RealEndTime) from bacula.Job group by Name) and type="B" and Name="donald" group by Name;')
 prueba4=$( echo $donald | cut -d " " -f 6-11)
+
+#conexion con postgresql : psql -h 172.22.200.110  -U juanjose.lopez -W -d db_backup -c 'select * from backups;'
