@@ -46,6 +46,7 @@ minnie_tamano=$( echo $minnie1 | cut -d " " -f 9)
 
 #Comprueba que se haya realizado la copia comparando si el dia actual y el ultimo dia registrado en la base de datos es el mismo
 if [ $minnie2 == $minnie3 ]; then
+  #si es correcta la fecha lo que realizará es mirar si la copia la ha realizado correctamente y en el caso de que no la realice, lo registrará y nos notificará por correo
   if [[ $minnie_estado == 'T' ]]; then
     psql -h 172.22.200.110 -U juanjose.lopez -d db_backup -c "insert into backups (backup_user, backup_host, backup_label, backup_description, backup_status, backup_mode) values ('juanjose.lopez', '172.22.200.102','$minnie_tipo', '$minnie_fecha con tamano de $minnie_tamano M', '200', 'Automatica');"
   else
@@ -74,6 +75,7 @@ donald_tamano=$( echo $donald1 | cut -d " " -f 9)
 
 #Comprueba que se haya realizado la copia comparando si el dia actual y el ultimo dia registrado en la base de datos es el mismo
 if [ $donald2 == $donald3 ]; then
+  #si es correcta la fecha lo que realizará es mirar si la copia la ha realizado correctamente y en el caso de que no la realice, lo registrará y nos notificará por correo
   if [[ $donald_estado == 'T' ]]; then
     psql -h 172.22.200.110 -U juanjose.lopez -d db_backup -c "insert into backups (backup_user, backup_host, backup_label, backup_description, backup_status, backup_mode) values ('juanjose.lopez', '172.22.200.76','$donald_tipo', '$donald_fecha con tamano de $donald_tamano M', '200', 'Automatica')"
   else
