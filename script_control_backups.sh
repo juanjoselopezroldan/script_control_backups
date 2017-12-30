@@ -1,4 +1,6 @@
 #!/bin/bash
+
+#Se consulta a la base de datos de bacula  y se obtiene los parametros necesarios para el registo de la copia
 mickey1=$( mariadb -u root -p'root' -e 'select Level, JobStatus, RealEndTime, (JobBytes/1024)/1024 from bacula.Job where RealEndTime in (select max(RealEndTime) from bacula.Job group by Name) and type="B" and Name="mickey" group by Name;')
 mickey2=$( echo $mickey1 | cut -d " " -f 7 | cut -d "-" -f 3)
 mickey3=$( date | cut -d " " -f 3)
@@ -37,7 +39,6 @@ if [ $minnie2 == $minnie3 ]; then
 else
   echo "ERROR: La copia se seguridad de minnie no se ha realizado, por favor compruebe que ocurre." | mail -s "Error en Grafana con Bacula" jjlr1994@gmail.com
 fi
-
 
 
 donald1=$( mariadb -u root -p'root' -e 'select Level, JobStatus, RealEndTime, (JobBytes/1024)/1024 from bacula.Job where RealEndTime in (select max(RealEndTime) from bacula.Job group by Name) and type="B" and Name="donald" group by Name;')
