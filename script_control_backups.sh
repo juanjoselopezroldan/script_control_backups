@@ -14,7 +14,7 @@ echo $mickey_tipo
 echo $mickey_tamano
 
 if [ $mickey2 == $mickey3 ]; then
-  echo "inset into backups (backup_user, backup_host, backup_label, backup_description, backup_status, backup_mode) values ('juanjose.lopez', '172.22.200.78','$mickey_tipo', '$mickey_fecha con tamano de $mickey_tamano M', '$mickey_estado', 'Automatica')"
+  psql -h 172.22.200.110  -U juanjose.lopez -d db_backup -c "inset into backups (backup_user, backup_host, backup_label, backup_description, backup_status, backup_mode) values ('juanjose.lopez', '172.22.200.78','$mickey_tipo', '$mickey_fecha con tamano de $mickey_tamano M', '$mickey_estado', 'Automatica');"
 else
   echo "ERROR: La copia se seguridad de mickey no se ha realizado, por favor compruebe que ocurre." | mail -s "Error en Grafana con Bacula" jjlr1994@gmail.com
 fi
@@ -33,7 +33,7 @@ echo $minnie_estado
 echo $minnie_tipo
 echo $minnie_tamano
 if [ $minnie2 == $minnie3 ]; then
-  echo "inset into backups (backup_user, backup_host, backup_label, backup_description, backup_status, backup_mode) values ('juanjose.lopez', '172.22.200.102','$minnie_tipo', '$minnie_fecha con tamano de $minnie_tamano M', '$minnie_estado', 'Automatica')"
+  psql -h 172.22.200.110  -U juanjose.lopez -d db_backup -c "inset into backups (backup_user, backup_host, backup_label, backup_description, backup_status, backup_mode) values ('juanjose.lopez', '172.22.200.102','$minnie_tipo', '$minnie_fecha con tamano de $minnie_tamano M', '$minnie_estado', 'Automatica');"
 else
   echo "ERROR: La copia se seguridad de minnie no se ha realizado, por favor compruebe que ocurre." | mail -s "Error en Grafana con Bacula" jjlr1994@gmail.com
 fi
@@ -54,7 +54,7 @@ echo $donald_tipo
 echo $donald_tamano
 
 if [ $donald2 == $donald3 ]; then
-  echo "inset into backups (backup_user, backup_host, backup_label, backup_description, backup_status, backup_mode) values ('juanjose.lopez', '172.22.200.76','$donald_tipo', '$donald_fecha con tamano de $donald_tamano M', '$donald_estado', 'Automatica')"
+  psql -h 172.22.200.110  -U juanjose.lopez -d db_backup -c "inset into backups (backup_user, backup_host, backup_label, backup_description, backup_status, backup_mode) values ('juanjose.lopez', '172.22.200.76','$donald_tipo', '$donald_fecha con tamano de $donald_tamano M', '$donald_estado', 'Automatica')"
 else
   echo "ERROR: La copia se seguridad de donald no se ha realizado, por favor compruebe que ocurre." | mail -s "Error en Grafana con Bacula" jjlr1994@gmail.com
 fi
