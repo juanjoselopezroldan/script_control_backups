@@ -83,6 +83,3 @@ else
   #En el caso de que no sea el mismo, quiere decir que la copia de seguridad no la ha realizado y por ello realizará el envio de un correo a traves de postfix para avisar que existe un problema
   echo "ERROR: La copia se seguridad de donald no se ha realizado, por favor compruebe que ocurre." | mail -s "Error en Grafana con Bacula" correo@gmail.com
 fi
-
-
-#conexion con postgresql : psql -h 172.22.200.110  -U juanjose.lopez -d db_backup -c 'select * from backups;'
