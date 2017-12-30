@@ -35,7 +35,7 @@ echo $minnie_tamano
 if [ $minnie2 == $minnie3 ]; then
   echo "inset into backups (backup_user, backup_host, backup_label, backup_description, backup_status, backup_mode) values ('juanjose.lopez', '172.22.200.102','$minnie_tipo', '$minnie_fecha con tamano de $minnie_tamano M', '$minnie_estado', 'Automatica')"
 else
-  echo "inset into backups (backup_user, backup_host, backup_label, backup_description, backup_status, backup_mode) values ('juanjose.lopez', '172.22.200.78','null', 'No se ha realizado la copia, por favor realice una comprobacion', 'F', 'Erronea')"
+  echo "inset into backups (backup_user, backup_host, backup_label, backup_description, backup_status, backup_mode) values ('juanjose.lopez', '172.22.200.102','null', 'No se ha realizado la copia, por favor realice una comprobacion', 'F', 'Erronea')"
 fi
 
 
@@ -54,9 +54,9 @@ echo $donald_tipo
 echo $donald_tamano
 
 if [ $donald2 != $donald3 ]; then
-  echo "inset into backups (backup_user, backup_host, backup_label, backup_description, backup_status, backup_mode) values ('juanjose.lopez', '172.22.200.78','$mickey_tipo', '$mickey_fecha con tamano de $mickey_tamano M', '$mickey_estado', 'Automatica')"
+  echo "inset into backups (backup_user, backup_host, backup_label, backup_description, backup_status, backup_mode) values ('juanjose.lopez', '172.22.200.76','$donald_tipo', '$donald_fecha con tamano de $donald_tamano M', '$donald_estado', 'Automatica')"
 else
-  echo "inset into backups (backup_user, backup_host, backup_label, backup_description, backup_status, backup_mode) values ('juanjose.lopez', '172.22.200.78','null', 'No se ha realizado la copia, por favor realice una comprobacion', 'F', 'Erronea')"
+  echo "inset into backups (backup_user, backup_host, backup_label, backup_description, backup_status, backup_mode) values ('juanjose.lopez', '172.22.200.76','null', 'No se ha realizado la copia, por favor realice una comprobacion', 'F', 'Erronea')"
 fi
 
 
