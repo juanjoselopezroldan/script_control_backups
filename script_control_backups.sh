@@ -22,7 +22,7 @@ if [ $mickey2 == $mickey3 ]; then
     psql -h 172.22.200.110 -U juanjose.lopez -d db_backup -c "insert into backups (backup_user, backup_host, backup_label, backup_description, backup_status, backup_mode) values ('juanjose.lopez', '172.22.200.78','$mickey_tipo', '$mickey_fecha con tamano de $mickey_tamano M', '200', 'Automatica');"
   else
     psql -h 172.22.200.110 -U juanjose.lopez -d db_backup -c "insert into backups (backup_user, backup_host, backup_label, backup_description, backup_status, backup_mode) values ('juanjose.lopez', '172.22.200.78','$mickey_tipo', '$mickey_fecha con tamano de $mickey_tamano M', '400', 'Automatica');"
-    echo "ERROR: La copia se seguridad de mickey se ha realizado de forma Erronea, por favor compruebe que ocurre." | mail -s "Error en Grafana con Bacula" correo@gmail.com
+    echo "ERROR: La copia se seguridad de mickey se ha realizado de forma ERRONEA, por favor compruebe que ocurre." | mail -s "Error en Grafana con Bacula" correo@gmail.com
   fi
 else
   #En el caso de que no sea el mismo, quiere decir que la copia de seguridad no la ha realizado y por ello realizará el envio de un correo a traves de postfix para avisar que existe un problema
@@ -51,7 +51,7 @@ if [ $minnie2 == $minnie3 ]; then
     psql -h 172.22.200.110 -U juanjose.lopez -d db_backup -c "insert into backups (backup_user, backup_host, backup_label, backup_description, backup_status, backup_mode) values ('juanjose.lopez', '172.22.200.102','$minnie_tipo', '$minnie_fecha con tamano de $minnie_tamano M', '200', 'Automatica');"
   else
     psql -h 172.22.200.110 -U juanjose.lopez -d db_backup -c "insert into backups (backup_user, backup_host, backup_label, backup_description, backup_status, backup_mode) values ('juanjose.lopez', '172.22.200.102','$minnie_tipo', '$minnie_fecha con tamano de $minnie_tamano M', '400', 'Automatica');"
-    echo "ERROR: La copia se seguridad de minnie se ha realizado de forma Erronea, por favor compruebe que ocurre." | mail -s "Error en Grafana con Bacula" correo@gmail.com
+    echo "ERROR: La copia se seguridad de minnie se ha realizado de forma ERRONEA, por favor compruebe que ocurre." | mail -s "Error en Grafana con Bacula" correo@gmail.com
   fi
 else
   #En el caso de que no sea el mismo, quiere decir que la copia de seguridad no la ha realizado y por ello realizará el envio de un correo a traves de postfix para avisar que existe un problema
@@ -80,7 +80,7 @@ if [ $donald2 == $donald3 ]; then
     psql -h 172.22.200.110 -U juanjose.lopez -d db_backup -c "insert into backups (backup_user, backup_host, backup_label, backup_description, backup_status, backup_mode) values ('juanjose.lopez', '172.22.200.76','$donald_tipo', '$donald_fecha con tamano de $donald_tamano M', '200', 'Automatica')"
   else
     psql -h 172.22.200.110 -U juanjose.lopez -d db_backup -c "insert into backups (backup_user, backup_host, backup_label, backup_description, backup_status, backup_mode) values ('juanjose.lopez', '172.22.200.76','$donald_tipo', '$donald_fecha con tamano de $donald_tamano M', '400', 'Automatica')"
-    echo "ERROR: La copia se seguridad de donald se ha realizado de forma Erronea, por favor compruebe que ocurre." | mail -s "Error en Grafana con Bacula" correo@gmail.com
+    echo "ERROR: La copia se seguridad de donald se ha realizado de forma ERRONEA, por favor compruebe que ocurre." | mail -s "Error en Grafana con Bacula" correo@gmail.com
   fi
 else
   #En el caso de que no sea el mismo, quiere decir que la copia de seguridad no la ha realizado y por ello realizará el envio de un correo a traves de postfix para avisar que existe un problema
