@@ -8,10 +8,11 @@ mickey2=$( echo $mickey1 | cut -d " " -f 7 | cut -d "-" -f 3)
 mickey3=$( date | cut -d " " -f 3)
 #Se filtra la fecha y hora para registrar dicha actividad
 mickey_fecha=$( echo $mickey1 | cut -d " " -f 7-8)
-#Se filtra la informacion para obtener el estado de la copia si ha sido correcto o no
+#Se filtra la informacion de la consulta realizada para obtener el estado de la copia si ha sido correcto o no
 mickey_estado=$( echo $mickey1 | cut -d " " -f 6)
-#Se filta la informacion para obtener que tipo de copia se ha realizado si es completa, diferencial o incremental
+#Se filta la informacion de la consulta realizada para obtener que tipo de copia se ha realizado si es completa, diferencial o incremental
 mickey_tipo=$( echo $mickey1 | cut -d " " -f 5)
+#Se filta la informacion de la consulta realizada para obtener el tamano de dicha copia
 mickey_tamano=$( echo $mickey1 | cut -d " " -f 9)
 echo $mickey2
 echo $mickey3
