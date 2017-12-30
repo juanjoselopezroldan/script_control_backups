@@ -1,7 +1,8 @@
 #!/bin/bash
 
-#Se consulta a la base de datos de bacula  y se obtiene los parametros necesarios para el registo de la copia
+#Se consulta a la base de datos de bacula  y se obtiene los parametros necesarios para el registo de la copia y todo ello se guarda en una variable
 mickey1=$( mariadb -u root -p'root' -e 'select Level, JobStatus, RealEndTime, (JobBytes/1024)/1024 from bacula.Job where RealEndTime in (select max(RealEndTime) from bacula.Job group by Name) and type="B" and Name="mickey" group by Name;')
+#Se filtra la fecha de esa consulta realizada para comparar posteriormente
 mickey2=$( echo $mickey1 | cut -d " " -f 7 | cut -d "-" -f 3)
 mickey3=$( date | cut -d " " -f 3)
 mickey_fecha=$( echo $mickey1 | cut -d " " -f 7-8)
