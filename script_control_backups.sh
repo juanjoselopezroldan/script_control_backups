@@ -19,9 +19,9 @@ mickey_tamano=$( echo $mickey1 | cut -d " " -f 9)
 if [ $mickey2 == $mickey3 ]; then
   #si es correcta la fecha lo que realizará es mirar si la copia la ha realizado correctamente y en el caso de que no la realice, lo registrará y nos notificará
   if [[ $mickey_estado == 'T' ]]; then
-    psql -h 172.22.200.110  -U juanjose.lopez -d db_backup -c "insert into backups (backup_user, backup_host, backup_label, backup_description, backup_status, backup_mode) values ('juanjose.lopez', '172.22.200.78','$mickey_tipo', '$mickey_fecha con tamano de $mickey_tamano M', '200', 'Automatica');"
+    psql -h 172.22.200.110 -U juanjose.lopez -d db_backup -c "insert into backups (backup_user, backup_host, backup_label, backup_description, backup_status, backup_mode) values ('juanjose.lopez', '172.22.200.78','$mickey_tipo', '$mickey_fecha con tamano de $mickey_tamano M', '200', 'Automatica');"
   else
-    psql -h 172.22.200.110  -U juanjose.lopez -d db_backup -c "insert into backups (backup_user, backup_host, backup_label, backup_description, backup_status, backup_mode) values ('juanjose.lopez', '172.22.200.78','$mickey_tipo', '$mickey_fecha con tamano de $mickey_tamano M', '400', 'Automatica');"
+    psql -h 172.22.200.110 -U juanjose.lopez -d db_backup -c "insert into backups (backup_user, backup_host, backup_label, backup_description, backup_status, backup_mode) values ('juanjose.lopez', '172.22.200.78','$mickey_tipo', '$mickey_fecha con tamano de $mickey_tamano M', '400', 'Automatica');"
     echo "ERROR: La copia se seguridad de mickey se ha realizado de forma Erronea, por favor compruebe que ocurre." | mail -s "Error en Grafana con Bacula" correo@gmail.com
   fi
 else
@@ -47,9 +47,9 @@ minnie_tamano=$( echo $minnie1 | cut -d " " -f 9)
 #Comprueba que se haya realizado la copia comparando si el dia actual y el ultimo dia registrado en la base de datos es el mismo
 if [ $minnie2 == $minnie3 ]; then
   if [[ $minnie_estado == 'T' ]]; then
-    psql -h 172.22.200.110  -U juanjose.lopez -d db_backup -c "insert into backups (backup_user, backup_host, backup_label, backup_description, backup_status, backup_mode) values ('juanjose.lopez', '172.22.200.102','$minnie_tipo', '$minnie_fecha con tamano de $minnie_tamano M', '200', 'Automatica');"
+    psql -h 172.22.200.110 -U juanjose.lopez -d db_backup -c "insert into backups (backup_user, backup_host, backup_label, backup_description, backup_status, backup_mode) values ('juanjose.lopez', '172.22.200.102','$minnie_tipo', '$minnie_fecha con tamano de $minnie_tamano M', '200', 'Automatica');"
   else
-    psql -h 172.22.200.110  -U juanjose.lopez -d db_backup -c "insert into backups (backup_user, backup_host, backup_label, backup_description, backup_status, backup_mode) values ('juanjose.lopez', '172.22.200.102','$minnie_tipo', '$minnie_fecha con tamano de $minnie_tamano M', '200', 'Automatica');"
+    psql -h 172.22.200.110 -U juanjose.lopez -d db_backup -c "insert into backups (backup_user, backup_host, backup_label, backup_description, backup_status, backup_mode) values ('juanjose.lopez', '172.22.200.102','$minnie_tipo', '$minnie_fecha con tamano de $minnie_tamano M', '400', 'Automatica');"
     echo "ERROR: La copia se seguridad de minnie se ha realizado de forma Erronea, por favor compruebe que ocurre." | mail -s "Error en Grafana con Bacula" correo@gmail.com
   fi
 else
@@ -74,7 +74,12 @@ donald_tamano=$( echo $donald1 | cut -d " " -f 9)
 
 #Comprueba que se haya realizado la copia comparando si el dia actual y el ultimo dia registrado en la base de datos es el mismo
 if [ $donald2 == $donald3 ]; then
-  psql -h 172.22.200.110  -U juanjose.lopez -d db_backup -c "insert into backups (backup_user, backup_host, backup_label, backup_description, backup_status, backup_mode) values ('juanjose.lopez', '172.22.200.76','$donald_tipo', '$donald_fecha con tamano de $donald_tamano M', '$donald_estado', 'Automatica')"
+  if [[ $donald_estado == 'T' ]]; then
+    psql -h 172.22.200.110 -U juanjose.lopez -d db_backup -c "insert into backups (backup_user, backup_host, backup_label, backup_description, backup_status, backup_mode) values ('juanjose.lopez', '172.22.200.76','$donald_tipo', '$donald_fecha con tamano de $donald_tamano M', '200', 'Automatica')"
+  else
+    psql -h 172.22.200.110 -U juanjose.lopez -d db_backup -c "insert into backups (backup_user, backup_host, backup_label, backup_description, backup_status, backup_mode) values ('juanjose.lopez', '172.22.200.76','$donald_tipo', '$donald_fecha con tamano de $donald_tamano M', '400', 'Automatica')"
+    echo "ERROR: La copia se seguridad de donald se ha realizado de forma Erronea, por favor compruebe que ocurre." | mail -s "Error en Grafana con Bacula" correo@gmail.com
+  fi
 else
   #En el caso de que no sea el mismo, quiere decir que la copia de seguridad no la ha realizado y por ello realizará el envio de un correo a traves de postfix para avisar que existe un problema
   echo "ERROR: La copia se seguridad de donald no se ha realizado, por favor compruebe que ocurre." | mail -s "Error en Grafana con Bacula" correo@gmail.com
