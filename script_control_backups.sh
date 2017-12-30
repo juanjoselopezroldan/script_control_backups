@@ -14,12 +14,7 @@ mickey_estado=$( echo $mickey1 | cut -d " " -f 6)
 mickey_tipo=$( echo $mickey1 | cut -d " " -f 5)
 #Se filta la informacion de la consulta realizada para obtener el tamano de dicha copia
 mickey_tamano=$( echo $mickey1 | cut -d " " -f 9)
-echo $mickey2
-echo $mickey3
-echo $mickey_fecha
-echo $mickey_estado
-echo $mickey_tipo
-echo $mickey_tamano
+
 #Comprueba que se haya realizado la copia comparando si el dia actual y el ultimo dia registrado en la base de datos es el mismo
 if [ $mickey2 == $mickey3 ]; then
   psql -h 172.22.200.110  -U juanjose.lopez -d db_backup -c "inset into backups (backup_user, backup_host, backup_label, backup_description, backup_status, backup_mode) values ('juanjose.lopez', '172.22.200.78','$mickey_tipo', '$mickey_fecha con tamano de $mickey_tamano M', '$mickey_estado', 'Automatica');"
@@ -42,12 +37,7 @@ minnie_estado=$( echo $minnie1 | cut -d " " -f 6)
 minnie_tipo=$( echo $minnie1 | cut -d " " -f 5)
 #Se filta la informacion de la consulta realizada para obtener el tamano de dicha copia
 minnie_tamano=$( echo $minnie1 | cut -d " " -f 9)
-echo $minnie2
-echo $minnie3
-echo $minnie_fecha
-echo $minnie_estado
-echo $minnie_tipo
-echo $minnie_tamano
+
 #Comprueba que se haya realizado la copia comparando si el dia actual y el ultimo dia registrado en la base de datos es el mismo
 if [ $minnie2 == $minnie3 ]; then
   psql -h 172.22.200.110  -U juanjose.lopez -d db_backup -c "inset into backups (backup_user, backup_host, backup_label, backup_description, backup_status, backup_mode) values ('juanjose.lopez', '172.22.200.102','$minnie_tipo', '$minnie_fecha con tamano de $minnie_tamano M', '$minnie_estado', 'Automatica');"
@@ -70,11 +60,6 @@ donald_estado=$( echo $donald1 | cut -d " " -f 6)
 donald_tipo=$( echo $donald1 | cut -d " " -f 5)
 #Se filta la informacion de la consulta realizada para obtener el tamano de dicha copia
 donald_tamano=$( echo $donald1 | cut -d " " -f 9)
-echo $donald2
-echo $donald3
-echo $donald_estado
-echo $donald_tipo
-echo $donald_tamano
 
 #Comprueba que se haya realizado la copia comparando si el dia actual y el ultimo dia registrado en la base de datos es el mismo
 if [ $donald2 == $donald3 ]; then
