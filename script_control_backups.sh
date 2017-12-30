@@ -4,8 +4,9 @@ grafana_fecha=$( mariadb -u root -p'root' -e 'select max(RealEndTime) from bacul
 grafana2=$( echo $grafana1 | cut -d " " -f 7)
 grafana3=$( echo $grafana_fecha | cut -d " " -f 2)
 grafana_estado=$( echo $grafana1 | cut -d " " -f 6)
- echo $grafana2
- echo $grafana3
+echo $grafana2
+echo $grafana3
+echo $grafana_estado
 
 #if [ $grafana2 != $grafana3 ]; then
 #    echo "true"
@@ -17,8 +18,10 @@ mickey1=$( mariadb -u root -p'root' -e 'select Level, JobStatus, RealEndTime, (J
 mickey_fecha=$( mariadb -u root -p'root' -e 'select max(RealEndTime) from bacula.Job where RealEndTime not in (select max(RealEndTime) from bacula.Job group by Name) and type="B" and Name="mickey" group by Name;')
 mickey2=$( echo $mickey1 | cut -d " " -f 7)
 mickey3=$( echo $mickey_fecha | cut -d " " -f 2)
+mickey_estado=$( echo $mickey1 | cut -d " " -f 6)
 echo $mickey2
 echo $mickey3
+echo $mickey_estado
 
 #if [ $mickey2 != $mickey3 ]; then
 #    echo "true"
@@ -30,8 +33,10 @@ minnie1=$( mariadb -u root -p'root' -e 'select Level, JobStatus, RealEndTime, (J
 minnie_fecha=$( mariadb -u root -p'root' -e 'select max(RealEndTime) from bacula.Job where RealEndTime not in (select max(RealEndTime) from bacula.Job group by Name) and type="B" and Name="minnie" group by Name;')
 minnie2=$( echo $minnie1 | cut -d " " -f 7)
 minnie3=$( echo $minnie_fecha | cut -d " " -f 2)
+minnie_estado=$( echo $minnie1 | cut -d " " -f 6)
 echo $minnie2
 echo $minnie3
+echo $minnie_estado
 
 #if [ $minnie2 != $minnie3 ]; then
 #    if
@@ -44,8 +49,10 @@ donald1=$( mariadb -u root -p'root' -e 'select Level, JobStatus, RealEndTime, (J
 donald_fecha=$( mariadb -u root -p'root' -e 'select max(RealEndTime) from bacula.Job where RealEndTime not in (select max(RealEndTime) from bacula.Job group by Name) and type="B" and Name="donald" group by Name;')
 donald2=$( echo $donald1 | cut -d " " -f 7)
 donald3=$( echo $donald_fecha | cut -d " " -f 2)
+donald_estado=$( echo $donald1 | cut -d " " -f 6)
 echo $donald2
 echo $donald3
+echo $donald_estado
 
 #if [ $donald2 != $donald3 ]; then
 #    echo "true"
