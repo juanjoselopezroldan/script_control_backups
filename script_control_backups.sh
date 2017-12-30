@@ -28,12 +28,19 @@ else
   echo "ERROR: La copia se seguridad de mickey no se ha realizado, por favor compruebe que ocurre." | mail -s "Error en Grafana con Bacula" correo@gmail.com
 fi
 
+#Se consulta a la base de datos de bacula  y se obtiene los parametros necesarios para el registo de la copia y todo ello se guarda en una variable
 minnie1=$( mariadb -u root -p'root' -e 'select Level, JobStatus, RealEndTime, (JobBytes/1024)/1024 from bacula.Job where RealEndTime in (select max(RealEndTime) from bacula.Job group by Name) and type="B" and Name="minnie" group by Name;')
+#Se filtra la fecha de esa consulta realizada para comparar posteriormente
 minnie2=$( echo $minnie1 | cut -d " " -f 7 | cut -d "-" -f 3)
+#Se obtiene la fecha actual del sistema, filtrando el dia
 minnie3=$( date | cut -d " " -f 3)
+#Se filtra la fecha y hora para registrar dicha actividad
 minnie_fecha=$( echo $minnie1 | cut -d " " -f 7-8)
+#Se filtra la informacion de la consulta realizada para obtener el estado de la copia si ha sido correcto o no
 minnie_estado=$( echo $minnie1 | cut -d " " -f 6)
+#Se filta la informacion de la consulta realizada para obtener que tipo de copia se ha realizado si es completa, diferencial o incremental
 minnie_tipo=$( echo $minnie1 | cut -d " " -f 5)
+#Se filta la informacion de la consulta realizada para obtener el tamano de dicha copia
 minnie_tamano=$( echo $minnie1 | cut -d " " -f 9)
 echo $minnie2
 echo $minnie3
