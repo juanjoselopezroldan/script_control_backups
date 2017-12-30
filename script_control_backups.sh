@@ -4,9 +4,13 @@
 mickey1=$( mariadb -u root -p'root' -e 'select Level, JobStatus, RealEndTime, (JobBytes/1024)/1024 from bacula.Job where RealEndTime in (select max(RealEndTime) from bacula.Job group by Name) and type="B" and Name="mickey" group by Name;')
 #Se filtra la fecha de esa consulta realizada para comparar posteriormente
 mickey2=$( echo $mickey1 | cut -d " " -f 7 | cut -d "-" -f 3)
+#Se obtiene la fecha actual del sistema, filtrando el dia
 mickey3=$( date | cut -d " " -f 3)
+#Se filtra la fecha y hora para registrar dicha actividad
 mickey_fecha=$( echo $mickey1 | cut -d " " -f 7-8)
+#Se filtra la informacion para obtener el estado de la copia si ha sido correcto o no
 mickey_estado=$( echo $mickey1 | cut -d " " -f 6)
+#Se filta la informacion para obtener que tipo de copia se ha realizado si es completa, diferencial o incremental
 mickey_tipo=$( echo $mickey1 | cut -d " " -f 5)
 mickey_tamano=$( echo $mickey1 | cut -d " " -f 9)
 echo $mickey2
