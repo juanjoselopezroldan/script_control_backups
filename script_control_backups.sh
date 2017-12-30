@@ -4,6 +4,11 @@ grafana_fecha=$( mariadb -u root -p'root' -e 'select max(RealEndTime) from bacul
 grafana2=$( echo $grafana1 | cut -d " " -f 7)
 grafana3=$( echo $grafana_fecha | cut -d " " -f 2)
 
+if [ $grafana2 == $grafana3 ]; then
+    echo "true"
+else
+    echo "false"
+fi
 
 mickey1=$( mariadb -u root -p'root' -e 'select Level, JobStatus, RealEndTime, (JobBytes/1024)/1024 from bacula.Job where RealEndTime in (select max(RealEndTime) from bacula.Job group by Name) and type="B" and Name="mickey" group by Name;')
 mickey3=$( echo $mickey1 | cut -d " " -f 6-11)
