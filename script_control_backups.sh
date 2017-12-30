@@ -53,7 +53,7 @@ echo $donald_estado
 echo $donald_tipo
 echo $donald_tamano
 
-if [ $donald2 != $donald3 ]; then
+if [ $donald2 == $donald3 ]; then
   echo "inset into backups (backup_user, backup_host, backup_label, backup_description, backup_status, backup_mode) values ('juanjose.lopez', '172.22.200.76','$donald_tipo', '$donald_fecha con tamano de $donald_tamano M', '$donald_estado', 'Automatica')"
 else
   echo "ERROR: La copia se seguridad de donald no se ha realizado, por favor compruebe que ocurre" | mail -s "Error en Grafana con Bacula" jjlr1994@gmail.com
