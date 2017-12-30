@@ -17,7 +17,7 @@ mickey_tamano=$( echo $mickey1 | cut -d " " -f 9)
 
 #Comprueba que se haya realizado la copia comparando si el dia actual y el ultimo dia registrado en la base de datos es el mismo
 if [ $mickey2 == $mickey3 ]; then
-  #si es correcta la fecha lo que realizará es mirar si la copia la ha realizado correctamente y en el caso de que no la realice, lo registrará y nos notificará
+  #si es correcta la fecha lo que realizará es mirar si la copia la ha realizado correctamente y en el caso de que no la realice, lo registrará y nos notificará por correo
   if [[ $mickey_estado == 'T' ]]; then
     psql -h 172.22.200.110 -U juanjose.lopez -d db_backup -c "insert into backups (backup_user, backup_host, backup_label, backup_description, backup_status, backup_mode) values ('juanjose.lopez', '172.22.200.78','$mickey_tipo', '$mickey_fecha con tamano de $mickey_tamano M', '200', 'Automatica');"
   else
