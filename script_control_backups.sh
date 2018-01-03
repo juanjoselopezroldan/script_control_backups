@@ -5,7 +5,7 @@ mickey1=$( mariadb -u root -p'root' -e 'select Level, JobStatus, RealEndTime, (J
 #Se filtra la fecha de esa consulta realizada para comparar posteriormente
 mickey2=$( echo $mickey1 | cut -d " " -f 7 | cut -d "-" -f 3)
 #Se obtiene la fecha actual del sistema, filtrando el dia
-mickey3=$( date +%d)
+mickey3=$( date +%d )
 #Se filtra la fecha y hora para registrar dicha actividad
 mickey_fecha=$( echo $mickey1 | cut -d " " -f 7-8)
 #Se filtra la informacion de la consulta realizada para obtener el estado de la copia si ha sido correcto o no
@@ -34,7 +34,7 @@ minnie1=$( mariadb -u root -p'root' -e 'select Level, JobStatus, RealEndTime, (J
 #Se filtra la fecha de esa consulta realizada para comparar posteriormente
 minnie2=$( echo $minnie1 | cut -d " " -f 7 | cut -d "-" -f 3)
 #Se obtiene la fecha actual del sistema, filtrando el dia
-minnie3=$( date +%d)
+minnie3=$( date +%d )
 #Se filtra la fecha y hora para registrar dicha actividad
 minnie_fecha=$( echo $minnie1 | cut -d " " -f 7-8)
 #Se filtra la informacion de la consulta realizada para obtener el estado de la copia si ha sido correcto o no
@@ -63,7 +63,7 @@ donald1=$( mariadb -u root -p'root' -e 'select Level, JobStatus, RealEndTime, (J
 #Se filtra la fecha de esa consulta realizada para comparar posteriormente
 donald2=$( echo $donald1 | cut -d " " -f 7 | cut -d "-" -f 3)
 #Se obtiene la fecha actual del sistema, filtrando el dia
-donald3=$( date +%d)
+donald3=$( date +%d )
 #Se filtra la fecha y hora para registrar dicha actividad
 donald_fecha=$( echo $donald1 | cut -d " " -f 7-8)
 #Se filtra la informacion de la consulta realizada para obtener el estado de la copia si ha sido correcto o no
