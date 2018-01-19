@@ -27,6 +27,7 @@ if [ $mickey2 == $mickey3 ]; then
 else
   #En el caso de que no sea el mismo, quiere decir que la copia de seguridad no la ha realizado y por ello realizará el envio de un correo a traves de postfix para avisar que existe un problema
   echo "ERROR: La copia se seguridad de mickey no se ha realizado, por favor compruebe que ocurre." | mail -s "Error en Grafana con Bacula" correo@gmail.com
+  psql -h 172.22.200.110 -U juanjose.lopez -d db_backup -c "insert into backups (backup_user, backup_host, backup_label, backup_description, backup_status, backup_mode) values ('juanjose.lopez', '172.22.200.78','$mickey_tipo', '$mickey_fecha con tamano de $mickey_tamano M', '400', 'Automatica');"
 fi
 
 #Se consulta a la base de datos de bacula  y se obtiene los parametros necesarios para el registo de la copia y todo ello se guarda en una variable
@@ -56,6 +57,7 @@ if [ $minnie2 == $minnie3 ]; then
 else
   #En el caso de que no sea el mismo, quiere decir que la copia de seguridad no la ha realizado y por ello realizará el envio de un correo a traves de postfix para avisar que existe un problema
   echo "ERROR: La copia se seguridad de minnie no se ha realizado, por favor compruebe que ocurre." | mail -s "Error en Grafana con Bacula" correo@gmail.com
+  psql -h 172.22.200.110 -U juanjose.lopez -d db_backup -c "insert into backups (backup_user, backup_host, backup_label, backup_description, backup_status, backup_mode) values ('juanjose.lopez', '172.22.200.102','$minnie_tipo', '$minnie_fecha con tamano de $minnie_tamano M', '400', 'Automatica');"
 fi
 
 #Se consulta a la base de datos de bacula  y se obtiene los parametros necesarios para el registo de la copia y todo ello se guarda en una variable
@@ -85,4 +87,5 @@ if [ $donald2 == $donald3 ]; then
 else
   #En el caso de que no sea el mismo, quiere decir que la copia de seguridad no la ha realizado y por ello realizará el envio de un correo a traves de postfix para avisar que existe un problema
   echo "ERROR: La copia se seguridad de donald no se ha realizado, por favor compruebe que ocurre." | mail -s "Error en Grafana con Bacula" correo@gmail.com
+  psql -h 172.22.200.110 -U juanjose.lopez -d db_backup -c "insert into backups (backup_user, backup_host, backup_label, backup_description, backup_status, backup_mode) values ('juanjose.lopez', '172.22.200.76','$donald_tipo', '$donald_fecha con tamano de $donald_tamano M', '400', 'Automatica')"
 fi
